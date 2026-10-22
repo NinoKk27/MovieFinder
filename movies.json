@@ -1,1 +1,142 @@
-[]
+[
+  {
+    "title": "The Matrix",
+    "director": "Lana Wachowski and Lilly Wachowski",
+    "genre": "Science fiction / Action",
+    "year": 1999,
+    "description": "A computer programmer discovers that everyday reality is a simulation and joins rebels fighting the machines that control humanity."
+  },
+  {
+    "title": "Inception",
+    "director": "Christopher Nolan",
+    "genre": "Science fiction / Thriller",
+    "year": 2010,
+    "description": "A thief who enters dreams assembles a team to plant an idea inside a powerful heir while struggling with memories of his wife."
+  },
+  {
+    "title": "Interstellar",
+    "director": "Christopher Nolan",
+    "genre": "Science fiction / Adventure",
+    "year": 2014,
+    "description": "As Earth becomes uninhabitable, astronauts travel through a wormhole to seek a new home while a father hopes to reunite with his daughter."
+  },
+  {
+    "title": "The Martian",
+    "director": "Ridley Scott",
+    "genre": "Science fiction / Adventure",
+    "year": 2015,
+    "description": "An astronaut stranded on Mars uses engineering and botany to survive while colleagues on Earth organize a rescue."
+  },
+  {
+    "title": "Arrival",
+    "director": "Denis Villeneuve",
+    "genre": "Science fiction / Drama",
+    "year": 2016,
+    "description": "A linguist studies the language of alien visitors to understand their intentions as nations struggle to cooperate."
+  },
+  {
+    "title": "Alien",
+    "director": "Ridley Scott",
+    "genre": "Science fiction / Horror",
+    "year": 1979,
+    "description": "The crew of a commercial spaceship encounters a deadly alien organism that hunts them in confined corridors."
+  },
+  {
+    "title": "Jurassic Park",
+    "director": "Steven Spielberg",
+    "genre": "Adventure / Science fiction",
+    "year": 1993,
+    "description": "Visitors to a theme park of cloned dinosaurs fight to survive when its security systems fail."
+  },
+  {
+    "title": "Jaws",
+    "director": "Steven Spielberg",
+    "genre": "Thriller / Adventure",
+    "year": 1975,
+    "description": "A police chief, a marine scientist, and a fisherman hunt a shark terrorizing a seaside community."
+  },
+  {
+    "title": "Finding Nemo",
+    "director": "Andrew Stanton",
+    "genre": "Animation / Family / Adventure",
+    "year": 2003,
+    "description": "A cautious clownfish crosses the ocean with a forgetful companion to rescue his son from a dentist aquarium."
+  },
+  {
+    "title": "Toy Story",
+    "director": "John Lasseter",
+    "genre": "Animation / Family / Comedy",
+    "year": 1995,
+    "description": "A cowboy toy grows jealous of a new space ranger toy, but the rivals must cooperate to return to their owner."
+  },
+  {
+    "title": "Spirited Away",
+    "director": "Hayao Miyazaki",
+    "genre": "Animation / Fantasy",
+    "year": 2001,
+    "description": "A young girl works in a mysterious bathhouse for spirits while trying to free her parents and return to the human world."
+  },
+  {
+    "title": "Ratatouille",
+    "director": "Brad Bird",
+    "genre": "Animation / Comedy",
+    "year": 2007,
+    "description": "A rat with a talent for cooking teams up with a young kitchen worker to pursue fine cuisine in Paris."
+  },
+  {
+    "title": "The Grand Budapest Hotel",
+    "director": "Wes Anderson",
+    "genre": "Comedy / Adventure",
+    "year": 2014,
+    "description": "A hotel concierge and his young lobby boy become entangled in an inheritance dispute and the theft of a valuable painting."
+  },
+  {
+    "title": "Groundhog Day",
+    "director": "Harold Ramis",
+    "genre": "Comedy / Fantasy / Romance",
+    "year": 1993,
+    "description": "A cynical television weatherman repeatedly relives the same day in a small town and gradually changes how he treats others."
+  },
+  {
+    "title": "When Harry Met Sally...",
+    "director": "Rob Reiner",
+    "genre": "Romance / Comedy",
+    "year": 1989,
+    "description": "Two acquaintances encounter each other over many years and question whether friendship can remain separate from romantic attraction."
+  },
+  {
+    "title": "Titanic",
+    "director": "James Cameron",
+    "genre": "Romance / Drama",
+    "year": 1997,
+    "description": "A wealthy young woman and a poor artist fall in love aboard an ocean liner before its disastrous collision with an iceberg."
+  },
+  {
+    "title": "The Shawshank Redemption",
+    "director": "Frank Darabont",
+    "genre": "Drama",
+    "year": 1994,
+    "description": "A banker imprisoned for murder forms a lasting friendship and sustains hope through decades of confinement and corruption."
+  },
+  {
+    "title": "The Godfather",
+    "director": "Francis Ford Coppola",
+    "genre": "Crime / Drama",
+    "year": 1972,
+    "description": "The reluctant son of a powerful crime family becomes increasingly involved in its violent struggles for power."
+  },
+  {
+    "title": "The Dark Knight",
+    "director": "Christopher Nolan",
+    "genre": "Action / Crime / Thriller",
+    "year": 2008,
+    "description": "Batman confronts a criminal who spreads chaos through Gotham and tests the moral limits of its defenders."
+  },
+  {
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "director": "Peter Jackson",
+    "genre": "Fantasy / Adventure",
+    "year": 2001,
+    "description": "A young hobbit and a fellowship set out to destroy a powerful ring before a dark ruler can reclaim it."
+  }
+]
