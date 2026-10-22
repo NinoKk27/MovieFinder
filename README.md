@@ -1,8 +1,8 @@
 # MovieFinder
 
 Python console application for semantic movie search. This milestone implements
-steps 1-15: configuration, a validated dataset, model loading, vector generation,
-and Pinecone indexing. Search is a later milestone.
+steps 1-20: configuration, a validated dataset, model loading, vector generation,
+Pinecone indexing, and interactive semantic search. Final tuning and review remain.
 
 ## Setup
 
@@ -66,7 +66,7 @@ Cloud, region, and namespace default to `aws`, `us-east-1`, and `movies`; overri
   romance, crime, horror, and drama, with original short descriptions.
 - `tests/test_setup.py`: offline validation and command tests.
 
-`pinecone_store.py` owns compatible index creation, stable IDs, and batched uploads. Search will be a separate module.
+`pinecone_store.py` owns compatible index creation, stable IDs, and batched uploads. `search.py` owns semantic querying, threshold filtering, and result display.
 
 ## Dataset and formatting
 
@@ -107,9 +107,9 @@ assignment was not supplied, so its exact submission rules remain unconfirmed.
 | Load all-MiniLM-L6-v2 | Implemented |
 | Generate movie embeddings | Implemented; real embeddings verified |
 | Store vectors in Pinecone using stable IDs | Implemented; live connection/upload pending API key |
-| Embed queries and retrieve top three movies | Pending |
-| Tune similarity threshold and report no matches | Pending |
-| Console search and exit | Pending |
+| Embed queries and retrieve top three movies | Implemented; live Pinecone retrieval pending key |
+| Tune similarity threshold and report no matches | Filtering implemented; threshold calibration pending |
+| Console search and exit | Implemented |
 
 Similarity threshold selection, indexing duplicate prevention, and a real search
 transcript will be documented after those features are implemented. The `--index` command can create a Pinecone index and upload records; the default command and `--embed` remain local.
@@ -160,3 +160,37 @@ live upload. Add your Pinecone key locally and run `--index` to complete that ch
 No cloud index or records have been created during this implementation.
 
 API reference: [Pinecone SDK quickstart](https://sdk.pinecone.io/python/getting-started/quickstart.html).
+
+
+## Search movies (steps 16-20)
+
+After configuring the key and running `--index`, start an interactive search:
+
+```powershell
+.\.venv\Scripts\python.exe main.py --search
+# Optional threshold override:
+.\.venv\Scripts\python.exe main.py --search --threshold 0.40
+```
+
+Describe a plot or theme, for example `an astronaut stranded on Mars trying to survive`.
+Queries use the same model and normalization as the movie vectors. The query is plain
+natural-language text, without the metadata labels used for movie records.
+Search requests three candidates from the configured namespace using cosine similarity
+on the `embedding` field, restricted to records tagged with the same embedding model.
+
+Candidates below the threshold are removed. Remaining results show title, year,
+director, genre, description, and similarity, ordered by score. Similarity is not a
+probability or a guarantee of relevance. If none qualify, the app reports no matching
+movies and asks for a different description. Fewer than three results may be shown.
+
+The default threshold is **0.35**, a provisional starting value, not a calibrated
+cutoff. Relevant, ambiguous, and unrelated query evaluation belongs to the final
+milestone. `--threshold` accepts finite values between -1 and 1, inclusive.
+Type `exit` to leave; blank input repeats the prompt. Search never creates an index
+or uploads records. If the index is missing, run `--index` first. Search does not
+require the local dataset file; it reads indexed metadata from Pinecone.
+
+Verification: all 21 offline tests passed, including top-three request parameters,
+threshold boundaries, empty results, formatting, and read-only index access.
+Live Pinecone retrieval remains blocked by the missing API key. A full live search
+transcript and final error-handling review remain for the last milestone.

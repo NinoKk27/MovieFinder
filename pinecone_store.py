@@ -36,9 +36,11 @@ def build_documents(movies, vectors):
     return documents
 
 
-def prepare_index(client, settings):
+def prepare_index(client, settings, *, create_if_missing=True):
     """Create only when missing; never replace an incompatible existing index."""
     if not client.indexes.exists(settings.index_name):
+        if not create_if_missing:
+            raise IndexingError("Movie index does not exist. Run main.py --index before searching.")
         client.indexes.create(
             name=settings.index_name,
             schema={"fields": {VECTOR_FIELD: {"type": "dense_vector", "dimension": EMBEDDING_DIMENSION, "metric": "cosine"}}},
