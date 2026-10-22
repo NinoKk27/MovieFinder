@@ -3,7 +3,8 @@ from dataclasses import dataclass
 import math
 from pinecone import DenseVectorQuery
 from config import MODEL_NAME
-from embeddings import embed_query
+from embeddings import embed_query, ModelLoadError
+from errors import PINECONE_ERRORS, pinecone_message
 from pinecone_store import VECTOR_FIELD
 
 DEFAULT_THRESHOLD = 0.35
@@ -39,7 +40,10 @@ def search_movies(index, namespace: str, query: str, *, threshold=DEFAULT_THRESH
         score = document.score
         if score is None or not math.isfinite(score) or score < threshold:
             continue
-        matches.append(MovieMatch(**{name: getattr(document, name) for name in RESULT_FIELDS}, score=score))
+        fields = {name: getattr(document, name, None) for name in RESULT_FIELDS}
+        if any(not isinstance(fields[name], str) or not fields[name].strip() for name in RESULT_FIELDS if name != "year") or type(fields["year"]) is not int:
+            raise ValueError("Indexed movie metadata is incomplete. Re-run --index to refresh the records.")
+        matches.append(MovieMatch(**fields, score=score))
     return sorted(matches, key=lambda match: match.score, reverse=True)[:3]
 
 
@@ -68,4 +72,12 @@ def run_search(index, namespace: str, *, threshold=DEFAULT_THRESHOLD) -> None:
         if not query:
             print("Describe the kind of movie you want to find.")
             continue
-        print(format_results(search_movies(index, namespace, query, threshold=threshold)))
+        try:
+            print(format_results(search_movies(index, namespace, query, threshold=threshold)))
+        except PINECONE_ERRORS as error:
+            print(pinecone_message(error))
+        except (ModelLoadError, ValueError) as error:
+            print(f"Search error: {error}")
+        except KeyboardInterrupt:
+            print("\nGoodbye!")
+            return

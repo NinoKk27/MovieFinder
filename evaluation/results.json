@@ -1,0 +1,401 @@
+[
+  {
+    "kind": "relevant",
+    "query": "An astronaut must grow food to survive alone on Mars",
+    "expected": "The Martian",
+    "top_three": [
+      {
+        "title": "The Martian",
+        "score": 0.488495
+      },
+      {
+        "title": "Interstellar",
+        "score": 0.29127
+      },
+      {
+        "title": "Alien",
+        "score": 0.189128
+      }
+    ]
+  },
+  {
+    "kind": "relevant",
+    "query": "People enter dreams to steal secrets and plant ideas",
+    "expected": "Inception",
+    "top_three": [
+      {
+        "title": "Inception",
+        "score": 0.490477
+      },
+      {
+        "title": "The Matrix",
+        "score": 0.191757
+      },
+      {
+        "title": "Spirited Away",
+        "score": 0.133297
+      }
+    ]
+  },
+  {
+    "kind": "relevant",
+    "query": "A linguist tries to communicate with visitors from another planet",
+    "expected": "Arrival",
+    "top_three": [
+      {
+        "title": "Arrival",
+        "score": 0.550584
+      },
+      {
+        "title": "The Martian",
+        "score": 0.250486
+      },
+      {
+        "title": "Interstellar",
+        "score": 0.23359
+      }
+    ]
+  },
+  {
+    "kind": "relevant",
+    "query": "A father fish searches the ocean for his missing son",
+    "expected": "Finding Nemo",
+    "top_three": [
+      {
+        "title": "Finding Nemo",
+        "score": 0.44339
+      },
+      {
+        "title": "Jaws",
+        "score": 0.295907
+      },
+      {
+        "title": "Interstellar",
+        "score": 0.269748
+      }
+    ]
+  },
+  {
+    "kind": "relevant",
+    "query": "A rat wants to become a chef in Paris",
+    "expected": "Ratatouille",
+    "top_three": [
+      {
+        "title": "Ratatouille",
+        "score": 0.670685
+      },
+      {
+        "title": "The Grand Budapest Hotel",
+        "score": 0.237634
+      },
+      {
+        "title": "Groundhog Day",
+        "score": 0.191264
+      }
+    ]
+  },
+  {
+    "kind": "relevant",
+    "query": "A weatherman lives the same day over and over",
+    "expected": "Groundhog Day",
+    "top_three": [
+      {
+        "title": "Groundhog Day",
+        "score": 0.505617
+      },
+      {
+        "title": "Jaws",
+        "score": 0.186302
+      },
+      {
+        "title": "Interstellar",
+        "score": 0.121751
+      }
+    ]
+  },
+  {
+    "kind": "relevant",
+    "query": "A shark threatens swimmers in a seaside town",
+    "expected": "Jaws",
+    "top_three": [
+      {
+        "title": "Jaws",
+        "score": 0.4828
+      },
+      {
+        "title": "Finding Nemo",
+        "score": 0.265742
+      },
+      {
+        "title": "Titanic",
+        "score": 0.241725
+      }
+    ]
+  },
+  {
+    "kind": "relevant",
+    "query": "A crime boss and his son struggle for control of their family business",
+    "expected": "The Godfather",
+    "top_three": [
+      {
+        "title": "The Godfather",
+        "score": 0.475877
+      },
+      {
+        "title": "The Grand Budapest Hotel",
+        "score": 0.288055
+      },
+      {
+        "title": "The Shawshank Redemption",
+        "score": 0.281817
+      }
+    ]
+  },
+  {
+    "kind": "relevant",
+    "query": "A young girl enters a magical world of spirits",
+    "expected": "Spirited Away",
+    "top_three": [
+      {
+        "title": "Spirited Away",
+        "score": 0.508116
+      },
+      {
+        "title": "Inception",
+        "score": 0.219958
+      },
+      {
+        "title": "The Grand Budapest Hotel",
+        "score": 0.169275
+      }
+    ]
+  },
+  {
+    "kind": "relevant",
+    "query": "A hobbit carries a dangerous ring on a quest",
+    "expected": "The Lord of the Rings: The Fellowship of the Ring",
+    "top_three": [
+      {
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "score": 0.514566
+      },
+      {
+        "title": "Finding Nemo",
+        "score": 0.154889
+      },
+      {
+        "title": "Inception",
+        "score": 0.151928
+      }
+    ]
+  },
+  {
+    "kind": "relevant",
+    "query": "Prison friendship and hope over many years",
+    "expected": "The Shawshank Redemption",
+    "top_three": [
+      {
+        "title": "The Shawshank Redemption",
+        "score": 0.40566
+      },
+      {
+        "title": "When Harry Met Sally...",
+        "score": 0.295492
+      },
+      {
+        "title": "The Godfather",
+        "score": 0.170483
+      }
+    ]
+  },
+  {
+    "kind": "relevant",
+    "query": "Cloned dinosaurs escape at a theme park",
+    "expected": "Jurassic Park",
+    "top_three": [
+      {
+        "title": "Jurassic Park",
+        "score": 0.604235
+      },
+      {
+        "title": "Finding Nemo",
+        "score": 0.229451
+      },
+      {
+        "title": "Toy Story",
+        "score": 0.188198
+      }
+    ]
+  },
+  {
+    "kind": "irrelevant",
+    "query": "How do I reset my wireless router password?",
+    "expected": null,
+    "top_three": [
+      {
+        "title": "Spirited Away",
+        "score": 0.072168
+      },
+      {
+        "title": "The Grand Budapest Hotel",
+        "score": 0.056959
+      },
+      {
+        "title": "Jurassic Park",
+        "score": 0.050186
+      }
+    ]
+  },
+  {
+    "kind": "irrelevant",
+    "query": "A recipe for sourdough bread",
+    "expected": null,
+    "top_three": [
+      {
+        "title": "Inception",
+        "score": 0.128471
+      },
+      {
+        "title": "Spirited Away",
+        "score": 0.119371
+      },
+      {
+        "title": "Groundhog Day",
+        "score": 0.108837
+      }
+    ]
+  },
+  {
+    "kind": "irrelevant",
+    "query": "How much income tax do I owe?",
+    "expected": null,
+    "top_three": [
+      {
+        "title": "The Shawshank Redemption",
+        "score": 0.065235
+      },
+      {
+        "title": "Interstellar",
+        "score": 0.055967
+      },
+      {
+        "title": "Toy Story",
+        "score": 0.049783
+      }
+    ]
+  },
+  {
+    "kind": "irrelevant",
+    "query": "The latest football match score",
+    "expected": null,
+    "top_three": [
+      {
+        "title": "Alien",
+        "score": 0.047398
+      },
+      {
+        "title": "Groundhog Day",
+        "score": 0.027141
+      },
+      {
+        "title": "The Shawshank Redemption",
+        "score": 0.01782
+      }
+    ]
+  },
+  {
+    "kind": "irrelevant",
+    "query": "Fix a leaking bathroom tap",
+    "expected": null,
+    "top_three": [
+      {
+        "title": "Spirited Away",
+        "score": 0.056185
+      },
+      {
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "score": 0.044143
+      },
+      {
+        "title": "Titanic",
+        "score": 0.02145
+      }
+    ]
+  },
+  {
+    "kind": "irrelevant",
+    "query": "Calculate the derivative of a polynomial",
+    "expected": null,
+    "top_three": [
+      {
+        "title": "Arrival",
+        "score": 0.07787
+      },
+      {
+        "title": "Titanic",
+        "score": 0.064585
+      },
+      {
+        "title": "The Dark Knight",
+        "score": 0.0602
+      }
+    ]
+  },
+  {
+    "kind": "ambiguous",
+    "query": "A funny movie about friendship",
+    "expected": null,
+    "top_three": [
+      {
+        "title": "When Harry Met Sally...",
+        "score": 0.542907
+      },
+      {
+        "title": "The Shawshank Redemption",
+        "score": 0.355578
+      },
+      {
+        "title": "Toy Story",
+        "score": 0.354242
+      }
+    ]
+  },
+  {
+    "kind": "ambiguous",
+    "query": "An exciting adventure",
+    "expected": null,
+    "top_three": [
+      {
+        "title": "Finding Nemo",
+        "score": 0.277157
+      },
+      {
+        "title": "Arrival",
+        "score": 0.271396
+      },
+      {
+        "title": "The Martian",
+        "score": 0.262993
+      }
+    ]
+  },
+  {
+    "kind": "ambiguous",
+    "query": "A romantic story",
+    "expected": null,
+    "top_three": [
+      {
+        "title": "When Harry Met Sally...",
+        "score": 0.385487
+      },
+      {
+        "title": "Titanic",
+        "score": 0.294706
+      },
+      {
+        "title": "The Grand Budapest Hotel",
+        "score": 0.28
+      }
+    ]
+  }
+]

@@ -7,7 +7,7 @@ from embeddings import ModelLoadError, load_embedding_model, embed_movies
 from pinecone_store import IndexingError, upload_movies, prepare_index
 from pinecone import Pinecone
 from search import DEFAULT_THRESHOLD, run_search, validate_threshold
-from pinecone.exceptions import PineconeException
+from errors import PINECONE_ERRORS, pinecone_message
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description="Prepare MovieFinder's dataset and embedding model.")
@@ -16,7 +16,7 @@ def main(argv=None) -> int:
     parser.add_argument("--embed", action="store_true", help="Generate all movie vectors locally without Pinecone.")
     parser.add_argument("--index", action="store_true", help="Create/validate the Pinecone index and upload movie vectors.")
     parser.add_argument("--search", action="store_true", help="Search an existing indexed movie collection interactively.")
-    parser.add_argument("--threshold", type=float, default=DEFAULT_THRESHOLD, help="Minimum cosine similarity for search (default: 0.35, provisional).")
+    parser.add_argument("--threshold", type=float, default=DEFAULT_THRESHOLD, help="Minimum cosine similarity for search (default: 0.35, evaluated locally).")
     args = parser.parse_args(argv)
     if args.search and (args.index or args.embed or args.load_model):
         parser.error("Run --search separately from --index, --embed, or --load-model.")
@@ -51,9 +51,12 @@ def main(argv=None) -> int:
     except (ConfigurationError, DatasetError, ModelLoadError, IndexingError, ValueError) as error:
         print(f"Setup error: {error}", file=sys.stderr)
         return 1
-    except PineconeException:
-        print("Pinecone request failed. Check your key, permissions, cloud/region, quota, and connection. Retry the operation after checking these settings.", file=sys.stderr)
+    except PINECONE_ERRORS as error:
+        print(pinecone_message(error), file=sys.stderr)
         return 1
+    except KeyboardInterrupt:
+        print("\nGoodbye!")
+        return 0
 
 if __name__ == "__main__":
     raise SystemExit(main())
