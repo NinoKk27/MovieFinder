@@ -1,8 +1,8 @@
 # MovieFinder
 
 Python console application for semantic movie search. This milestone implements
-steps 1-10: configuration, a validated dataset, searchable text, and model loading.
-Vector generation, Pinecone connections/indexing, and search are later milestones.
+steps 1-15: configuration, a validated dataset, model loading, vector generation,
+and Pinecone indexing. Search is a later milestone.
 
 ## Setup
 
@@ -54,7 +54,7 @@ must contain 1-45 lowercase letters, digits, or hyphens, and start and end with 
 letter or digit. Missing index names default to `movie-finder`; explicit blank
 values are rejected. Environment variables override the project `.env` file.
 Keys are omitted from the settings representation. Never commit `.env`.
-Cloud/region settings will be introduced when index creation is implemented.
+Cloud, region, and namespace default to `aws`, `us-east-1`, and `movies`; override them with PINECONE_CLOUD, PINECONE_REGION, and PINECONE_NAMESPACE. Confirm that your chosen region is supported by your account.
 
 ## Modules
 
@@ -66,7 +66,7 @@ Cloud/region settings will be introduced when index creation is implemented.
   romance, crime, horror, and drama, with original short descriptions.
 - `tests/test_setup.py`: offline validation and command tests.
 
-Pinecone access and search will be separate modules when those steps begin.
+`pinecone_store.py` owns compatible index creation, stable IDs, and batched uploads. Search will be a separate module.
 
 ## Dataset and formatting
 
@@ -105,15 +105,14 @@ assignment was not supplied, so its exact submission rules remain unconfirmed.
 | --- | --- |
 | Load at least 20 movies with five required fields | Implemented |
 | Load all-MiniLM-L6-v2 | Implemented |
-| Generate movie embeddings | Next milestone |
-| Store vectors in Pinecone using stable IDs | Next milestone |
+| Generate movie embeddings | Implemented; real embeddings verified |
+| Store vectors in Pinecone using stable IDs | Implemented; live connection/upload pending API key |
 | Embed queries and retrieve top three movies | Pending |
 | Tune similarity threshold and report no matches | Pending |
 | Console search and exit | Pending |
 
 Similarity threshold selection, indexing duplicate prevention, and a real search
-transcript will be documented after those features are implemented. No Pinecone
-index or external records are created by the current commands.
+transcript will be documented after those features are implemented. The `--index` command can create a Pinecone index and upload records; the default command and `--embed` remain local.
 
 References: [SentenceTransformer constructor](https://www.sbert.net/docs/package_reference/sentence_transformer/model.html)
 and [Pinecone index naming](https://docs.pinecone.io/reference/api/2025-10/control-plane/configure_index).
@@ -124,4 +123,40 @@ Commit source, tests, dataset, README, requirements, and the environment templat
 Keep `.env`, `.venv`, `.idea`, and `.cache` out of Git. Connect this project to its
 GitHub repository before submission if required by the assignment.
 
-Verified for this milestone: all 8 offline tests passed, dependency checks passed, and the actual model loaded successfully with 384-dimensional output. Pinecone credentials and connectivity have not been tested.
+Verified through step 15: all 14 offline tests passed and the actual model generated 20 finite, normalized 384-dimensional movie vectors. Live Pinecone connection and upload are blocked by the missing API key.
+
+
+## Generate and index movies (steps 11-15)
+
+```powershell
+# Generate vectors locally, without an API key or upload:
+.\.venv\Scripts\python.exe main.py --embed
+# Validate settings, embed movies, create/validate an index, then upload:
+.\.venv\Scripts\python.exe main.py --index
+```
+
+The encoder uses the same formatted movie metadata defined above and normalizes
+vectors for cosine similarity. Shape, finite values, and vector norms are checked
+before upload. Vectors are generated in memory rather than saved to a separate file.
+
+The installed Pinecone v10 SDK creates document indexes. The application declares
+one dense `embedding` field (384 dimensions, cosine) and uploads each vector with
+all five movie fields and the embedding model name through `index.documents.upsert`.
+Index creation waits at most 60 seconds. Existing indexes must be ready and have
+exactly the expected schema; incompatible indexes are left unchanged. The default
+managed deployment uses AWS us-east-1. Client construction alone does not authenticate;
+index existence/description requests provide the connection check.
+
+Each ID is a SHA-256 digest of the normalized title and year. Reordering the dataset
+or updating a description preserves its ID; rerunning indexing overwrites the same
+records in the same namespace. Changing a title or year creates a new identity.
+Removing a movie from the local dataset does not delete its old remote record.
+Uploads use batches of at most 50 records with a 30-second request timeout and check
+accepted counts. Retrying after a partial failure is safe for unchanged IDs. Pinecone
+applies writes asynchronously, so accepted records may not immediately appear in search.
+
+The repeated-upload test uses a simulated service; it is not evidence of a successful
+live upload. Add your Pinecone key locally and run `--index` to complete that check.
+No cloud index or records have been created during this implementation.
+
+API reference: [Pinecone SDK quickstart](https://sdk.pinecone.io/python/getting-started/quickstart.html).
